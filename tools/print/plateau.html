@@ -1,0 +1,26 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><title>Plateau Patient</title>
+<script src="../../web/js/data.js"></script><script src="../../web/js/icons.js"></script>
+<style>
+/* A5 paysage + 3 mm de fond perdu */
+@page { size: 216mm 154mm; margin: 0; }
+* { box-sizing: border-box; } html, body { margin: 0; }
+body { width: 216mm; height: 154mm; background: linear-gradient(160deg, #10283b, #07111b); color: #e8f4fa; font-family: 'Segoe UI', Arial, sans-serif; position: relative; overflow: hidden; }
+.in { position: absolute; inset: 8mm; border: .6mm solid #4fd1e8; border-radius: 4mm; padding: 4mm 5mm; display: grid; grid-template-columns: 1fr 52mm; gap: 4mm; }
+h1 { font-family: Bahnschrift, sans-serif; font-size: 15pt; letter-spacing: 2px; margin: 0 0 2mm; color: #4fd1e8; } h1 small { font-size: 7pt; color: #8fb0c2; letter-spacing: .5px; margin-left: 3mm; }
+.row { display: flex; align-items: center; gap: 2mm; height: 23.5mm; border-top: .2mm solid #1f4a66; }
+.ic svg { width: 13mm; height: 13mm; } .nm { width: 17mm; font-weight: 700; font-size: 9.5pt; } .nm small { display: block; font-weight: 400; font-size: 6pt; color: #8fb0c2; }
+.cells { display: flex; gap: 1mm; flex: 1; } .c { flex: 1; height: 14mm; border-radius: 1.4mm; border: .35mm solid var(--k); display: flex; align-items: center; justify-content: center; font-family: Bahnschrift, sans-serif; font-weight: 700; font-size: 11pt; color: #fff; background: color-mix(in srgb, var(--k) 38%, #07111b); }
+.c.z { background: #1a1a1a; border-color: #777; color: #bbb; font-size: 5.5pt; } .c.g { background: color-mix(in srgb, var(--k) 70%, #07111b); } .c.x { opacity: .55; border-style: dashed; }
+.side { font-size: 8.2pt; line-height: 1.38; } .slot { border: .35mm dashed #4fd1e8; border-radius: 2mm; height: 22mm; display: flex; align-items: center; justify-content: center; color: #8fb0c2; font-size: 7pt; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2mm; }
+.atp { display: flex; gap: 2mm; align-items: center; margin: 1mm 0 2.5mm; } .atp i { width: 9mm; height: 9mm; border-radius: 50%; border: .5mm solid #ffd24a; display: block; } .atp i.x { border-style: dashed; opacity: .6; }
+ol { margin: 1mm 0 0; padding-left: 4mm; } b { color: #ffd24a; }
+</style></head><body><div class="in"><div><h1>DOSSIER PATIENT <small>HOMEOSTASIS v6 · un cube par système sur ses PV actuels · Chroniques glissées à côté de leur système</small></h1><div id="rows"></div></div>
+<div class="side"><div class="slot">Profil génétique</div><div class="slot">Habitude de vie</div>
+<b>ATP</b> (1 ATP = 1 Puissance)<div class="atp"><i></i><i></i><i class="x"></i><span style="color:#8fb0c2;font-size:6.5pt">3e : Activité physique</span></div>
+<b>Tour de jeu</b><ol><li><b>Maintenance</b> : piochez 2 · Burn -1 PV par Chronique active</li><li><b>Invasion</b> : révélez 1 Pathologie</li><li><b>Signes vitaux</b> : 3 dés (2 si Nécrose) · 1 Mulligan</li><li><b>Réponse</b> : 2 Actions</li><li><b>Homéostasie</b> : dégâts − boucliers · Collatéral · Zone verte (+1 ATP si tout &gt; 5)</li></ol>
+<p style="margin:1.5mm 0 0"><b>Nécrose</b> (0 PV) : 2 dés. <b>Réanimation</b> : 1 Action + 2 dés → 4 PV. <b>2 systèmes à 0 = décès.</b></p></div></div>
+<script>
+document.getElementById('rows').innerHTML = HS.SYS.map((s) => { const I = HS.SYS_INFO[s]; let c = '<div class="c z">NÉCROSE</div>';
+  for (let i = 1; i <= 11; i++) c += `<div class="c ${i > 5 ? 'g' : ''} ${i === 11 ? 'x' : ''}">${i}</div>`;
+  return `<div class="row" style="--k:${I.color}"><span class="ic">${HS.ICON[s]}</span><span class="nm">${I.name}<small>${I.long}</small></span><div class="cells">${c}</div></div>`; }).join('');
+</script></body></html>

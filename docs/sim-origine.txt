@@ -1,0 +1,16 @@
+## Règles d'origine v5.1 (approximation : 15 PV, pioche 2, réanimation, soins d'origine, 65 pathologies)
+COOP 1J [resident] victoire 98.9% | tours moy. 64.6 | PVfin 61.2 | déf.méd. 42% | cj/t 0.54 | dég/t 3.68 soin/t 3.48
+COOP 2J [resident] victoire 99.9% | tours moy. 65.0 | PVfin 62.3 | déf.méd. 77% | cj/t 0.63 | dég/t 4.03 soin/t 3.67
+COOP 3J [resident] victoire 99.9% | tours moy. 65.0 | PVfin 62.6 | déf.méd. 91% | cj/t 0.66 | dég/t 4.17 soin/t 3.66
+COOP 4J [resident] victoire 100.0% | tours moy. 64.0 | PVfin 63.0 | déf.méd. -% | cj/t 0.67 | dég/t 4.18 soin/t 3.51
+VS 2J sièges 53.0% / 47.0% | tours moy. 65.1 | fin par KO 5.2% | égalités 4.4%
+VS 3J sièges 36.0% / 33.4% / 30.6% | tours moy. 66.0 | fin par KO 0.0% | égalités 6.6%
+VS 4J sièges 25.6% / 24.5% / 25.0% / 24.9% | tours moy. 64.0 | fin par KO 0.0% | égalités 8.3%
+## Règles d'origine v4.0 (approximation : 10 PV, pioche 1, nécrose définitive, soins d'origine, 65 pathologies)
+COOP 1J [resident] victoire 60.9% | tours moy. 51.0 | PVfin 40.0 | déf.méd. 40% | cj/t 0.74 | dég/t 4.26 soin/t 3.89
+COOP 2J [resident] victoire 80.3% | tours moy. 61.0 | PVfin 40.8 | déf.méd. 71% | cj/t 0.86 | dég/t 4.50 soin/t 4.13
+COOP 3J [resident] victoire 92.7% | tours moy. 64.0 | PVfin 41.4 | déf.méd. 83% | cj/t 0.90 | dég/t 4.51 soin/t 4.12
+COOP 4J [resident] victoire 98.3% | tours moy. 63.7 | PVfin 42.5 | déf.méd. 81% | cj/t 0.92 | dég/t 4.44 soin/t 4.03
+VS 2J sièges 51.2% / 48.8% | tours moy. 49.2 | fin par KO 67.3% | égalités 2.0%
+VS 3J sièges 33.5% / 33.0% / 33.4% | tours moy. 64.0 | fin par KO 16.8% | égalités 4.7%
+VS 4J sièges 26.2% / 23.2% / 25.0% / 25.5% | tours moy. 64.5 | fin par KO 0.5% | égalités 8.0%

@@ -1,0 +1,15 @@
+{
+  "name": "homeostasis",
+  "version": "6.0.0",
+  "private": true,
+  "description": "HOMEOSTASIS — jeu de cartes médical (web, Android, impression)",
+  "scripts": {
+    "sim": "node sim/simulate.js 2000 --detail",
+    "cards": "node tools/build_cards.js",
+    "serve": "node tools/serve.js"
+  },
+  "dependencies": {
+    "peerjs": "^1.5.5",
+    "puppeteer-core": "^25.12.0"
+  }
+}

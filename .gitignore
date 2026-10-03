@@ -1,0 +1,7 @@
+node_modules/
+android/.sdk/
+android/build/
+android/*.keystore
+impression/
+*.idsig
+.claude/

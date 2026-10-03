@@ -1,0 +1,184 @@
+=== HOMEOSTASIS v6.0 — 4000 parties par configuration === 
+COOP 1J [interne] victoire 79.2% | tours moy. 15.7 | PVfin 37.8 | déf.méd. 59% | cj/t 1.07 | dég/t 6.14 soin/t 4.76
+  Nécroses par système: {"digest":796,"neuro":546,"cardio":404,"respi":385,"immuno":383}
+  Victoire par profil génétique:
+    lynch             84.3%  (n=439)
+    metaboliseur      84.1%  (n=415)
+    senior            81.4%  (n=377)
+    jeune             81.2%  (n=404)
+    hemochromatose    78.4%  (n=361)
+    hla               78.1%  (n=389)
+    ehlers            76.8%  (n=400)
+    cardiaque         76.5%  (n=426)
+    alpha1            75.6%  (n=418)
+    brca              74.4%  (n=371)
+  Victoire par habitude de départ:
+    tabagisme         80.7%  (n=362)
+    malbouffe         80.1%  (n=357)
+    stresschro        80.1%  (n=357)
+    isolement         79.7%  (n=349)
+    negligence        79.5%  (n=375)
+    deni              79.3%  (n=362)
+    surmenage         79.2%  (n=342)
+    alcoolisme        78.3%  (n=351)
+    insomnie          78.3%  (n=387)
+    aucune            78.1%  (n=389)
+    sedentarite       77.5%  (n=369)
+COOP 2J [interne] victoire 81.1% | tours moy. 27.2 | PVfin 36.8 | déf.méd. 61% | cj/t 1.08 | dég/t 6.25 soin/t 4.76
+COOP 3J [interne] victoire 84.2% | tours moy. 36.7 | PVfin 36.2 | déf.méd. 63% | cj/t 1.08 | dég/t 6.28 soin/t 4.69
+  Nécroses par système: {"digest":1244,"neuro":598,"cardio":464,"immuno":418,"respi":359}
+  Victoire par profil génétique:
+    metaboliseur      86.1%  (n=1221)
+    hemochromatose    85.0%  (n=1150)
+    lynch             84.8%  (n=1221)
+    jeune             84.8%  (n=1194)
+    senior            84.5%  (n=1188)
+    cardiaque         84.0%  (n=1271)
+    alpha1            83.8%  (n=1242)
+    hla               83.7%  (n=1185)
+    brca              83.2%  (n=1164)
+    ehlers            81.9%  (n=1164)
+  Victoire par habitude de départ:
+    surmenage         86.2%  (n=1030)
+    alcoolisme        85.4%  (n=1106)
+    negligence        85.3%  (n=1078)
+    sedentarite       84.7%  (n=1063)
+    deni              84.7%  (n=1075)
+    malbouffe         83.8%  (n=1089)
+    aucune            83.7%  (n=1185)
+    insomnie          83.4%  (n=1148)
+    tabagisme         83.3%  (n=1096)
+    isolement         83.0%  (n=1026)
+    stresschro        82.9%  (n=1104)
+COOP 4J [interne] victoire 87.0% | tours moy. 46.3 | PVfin 36.6 | déf.méd. 63% | cj/t 1.08 | dég/t 6.27 soin/t 4.67
+COOP 1J [resident] victoire 67.8% | tours moy. 15.0 | PVfin 33.9 | déf.méd. 55% | cj/t 1.09 | dég/t 6.19 soin/t 4.69
+  Nécroses par système: {"respi":527,"cardio":686,"neuro":824,"digest":1141,"immuno":612}
+  Victoire par profil génétique:
+    metaboliseur      77.6%  (n=415)
+    lynch             72.4%  (n=439)
+    jeune             72.0%  (n=404)
+    hemochromatose    69.8%  (n=361)
+    hla               68.6%  (n=389)
+    alpha1            65.8%  (n=418)
+    senior            65.8%  (n=377)
+    ehlers            62.8%  (n=400)
+    cardiaque         61.7%  (n=426)
+    brca              60.6%  (n=371)
+  Victoire par habitude de départ:
+    tabagisme         70.7%  (n=362)
+    alcoolisme        70.4%  (n=351)
+    stresschro        69.2%  (n=357)
+    deni              69.1%  (n=362)
+    insomnie          69.0%  (n=387)
+    aucune            68.6%  (n=389)
+    surmenage         66.7%  (n=342)
+    sedentarite       66.1%  (n=369)
+    malbouffe         65.8%  (n=357)
+    negligence        65.1%  (n=375)
+    isolement         65.0%  (n=349)
+COOP 2J [resident] victoire 64.3% | tours moy. 25.8 | PVfin 32.2 | déf.méd. 58% | cj/t 1.09 | dég/t 6.34 soin/t 4.69
+COOP 3J [resident] victoire 65.4% | tours moy. 35.0 | PVfin 31.3 | déf.méd. 59% | cj/t 1.08 | dég/t 6.37 soin/t 4.61
+  Nécroses par système: {"digest":2081,"immuno":829,"respi":651,"cardio":1087,"neuro":1143}
+  Victoire par profil génétique:
+    jeune             69.1%  (n=1194)
+    metaboliseur      68.2%  (n=1221)
+    lynch             67.3%  (n=1221)
+    hla               66.7%  (n=1185)
+    hemochromatose    66.1%  (n=1150)
+    brca              64.4%  (n=1164)
+    alpha1            64.4%  (n=1242)
+    cardiaque         63.9%  (n=1271)
+    senior            63.7%  (n=1188)
+    ehlers            60.1%  (n=1164)
+  Victoire par habitude de départ:
+    surmenage         67.2%  (n=1030)
+    alcoolisme        67.0%  (n=1106)
+    aucune            66.7%  (n=1185)
+    sedentarite       66.1%  (n=1063)
+    negligence        65.4%  (n=1078)
+    stresschro        65.4%  (n=1104)
+    malbouffe         64.9%  (n=1089)
+    deni              64.8%  (n=1075)
+    insomnie          64.3%  (n=1148)
+    tabagisme         64.2%  (n=1096)
+    isolement         63.3%  (n=1026)
+COOP 4J [resident] victoire 67.0% | tours moy. 44.3 | PVfin 31.3 | déf.méd. 61% | cj/t 1.08 | dég/t 6.37 soin/t 4.59
+COOP 1J [patron] victoire 52.7% | tours moy. 14.1 | PVfin 29.9 | déf.méd. 50% | cj/t 1.09 | dég/t 6.17 soin/t 4.52
+  Nécroses par système: {"respi":765,"cardio":1066,"immuno":860,"neuro":1113,"digest":1589}
+  Victoire par profil génétique:
+    metaboliseur      66.5%  (n=415)
+    jeune             60.6%  (n=404)
+    lynch             56.0%  (n=439)
+    hla               54.8%  (n=389)
+    hemochromatose    54.0%  (n=361)
+    alpha1            53.1%  (n=418)
+    cardiaque         47.7%  (n=426)
+    ehlers            46.0%  (n=400)
+    brca              44.7%  (n=371)
+    senior            41.9%  (n=377)
+  Victoire par habitude de départ:
+    tabagisme         57.2%  (n=362)
+    stresschro        55.5%  (n=357)
+    surmenage         55.0%  (n=342)
+    aucune            54.8%  (n=389)
+    alcoolisme        54.7%  (n=351)
+    deni              51.7%  (n=362)
+    negligence        51.5%  (n=375)
+    malbouffe         51.0%  (n=357)
+    insomnie          50.9%  (n=387)
+    isolement         49.3%  (n=349)
+    sedentarite       48.5%  (n=369)
+COOP 2J [patron] victoire 41.5% | tours moy. 23.3 | PVfin 28.0 | déf.méd. 53% | cj/t 1.07 | dég/t 6.31 soin/t 4.44
+COOP 3J [patron] victoire 38.0% | tours moy. 31.3 | PVfin 26.8 | déf.méd. 55% | cj/t 1.06 | dég/t 6.35 soin/t 4.36
+  Nécroses par système: {"neuro":1781,"digest":3130,"respi":1090,"cardio":1861,"immuno":1410}
+  Victoire par profil génétique:
+    jeune             43.0%  (n=1194)
+    hemochromatose    40.6%  (n=1150)
+    hla               39.7%  (n=1185)
+    metaboliseur      38.8%  (n=1221)
+    lynch             38.7%  (n=1221)
+    alpha1            36.8%  (n=1242)
+    cardiaque         36.4%  (n=1271)
+    senior            35.8%  (n=1188)
+    ehlers            35.3%  (n=1164)
+    brca              35.2%  (n=1164)
+  Victoire par habitude de départ:
+    aucune            39.7%  (n=1185)
+    alcoolisme        39.1%  (n=1106)
+    surmenage         39.0%  (n=1030)
+    negligence        38.8%  (n=1078)
+    stresschro        38.1%  (n=1104)
+    malbouffe         38.0%  (n=1089)
+    isolement         37.9%  (n=1026)
+    sedentarite       37.7%  (n=1063)
+    tabagisme         37.0%  (n=1096)
+    deni              36.5%  (n=1075)
+    insomnie          36.4%  (n=1148)
+COOP 4J [patron] victoire 35.6% | tours moy. 39.2 | PVfin 26.4 | déf.méd. 55% | cj/t 1.06 | dég/t 6.37 soin/t 4.34
+VS 2J sièges 49.0% / 51.0% | tours moy. 24.1 | fin par KO 60.3% | égalités 3.1%
+VS 3J sièges 32.7% / 33.7% / 33.6% | tours moy. 37.4 | fin par KO 25.9% | égalités 3.5%
+  Victoire par profil (attendu 33.3%):
+    hla               42.3%  (n=1177)
+    lynch             41.3%  (n=1199)
+    metaboliseur      35.0%  (n=1142)
+    senior            33.7%  (n=1221)
+    hemochromatose    31.7%  (n=1160)
+    alpha1            31.6%  (n=1255)
+    cardiaque         31.0%  (n=1192)
+    ehlers            29.3%  (n=1205)
+    brca              28.9%  (n=1199)
+    jeune             28.9%  (n=1250)
+  Victoire par habitude de départ:
+    aucune            42.3%  (n=1177)
+    negligence        35.6%  (n=1083)
+    surmenage         34.3%  (n=1079)
+    malbouffe         33.8%  (n=1075)
+    stresschro        33.2%  (n=1123)
+    insomnie          32.9%  (n=1117)
+    alcoolisme        32.4%  (n=1045)
+    tabagisme         31.0%  (n=1138)
+    deni              30.3%  (n=1046)
+    isolement         30.1%  (n=1079)
+    sedentarite       29.8%  (n=1038)
+VS 4J sièges 24.3% / 24.8% / 25.0% / 25.8% | tours moy. 48.5 | fin par KO 7.9% | égalités 5.2%
+(360.9 s)

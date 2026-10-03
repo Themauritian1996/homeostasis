@@ -1,0 +1,48 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><title>Aide de jeu</title>
+<script src="../../web/js/data.js"></script><script src="../../web/js/icons.js"></script>
+<style>
+/* A5 portrait + 3 mm de fond perdu */
+@page { size: 154mm 216mm; margin: 0; }
+* { box-sizing: border-box; } html, body { margin: 0; }
+body { width: 154mm; height: 216mm; background: linear-gradient(170deg, #10283b, #07111b); color: #e8f4fa; font-family: 'Segoe UI', Arial, sans-serif; font-size: 7.1pt; line-height: 1.24; position: relative; overflow: hidden; }
+.in { position: absolute; inset: 8mm; } h1 { font-family: Bahnschrift, sans-serif; text-align: center; font-size: 15pt; letter-spacing: 2px; margin: 0; } h1 span { color: #4fd1e8; } h1 small { font-size: 8pt; }
+.lead { text-align: center; color: #b9d3dd; margin: 1mm 0 2mm; font-size: 7.6pt; } .lead b { color: #4fd1e8; }
+.bx { border: .45mm solid #4fd1e8; border-radius: 3mm; padding: 1.5mm 2.5mm; margin-bottom: 1.8mm; box-shadow: 0 0 3mm rgba(79,209,232,.25); }
+h2 { font-family: Bahnschrift, sans-serif; font-size: 9.5pt; letter-spacing: 1px; color: #4fd1e8; margin: 0 0 1.2mm; text-align: center; text-transform: uppercase; }
+.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; } .g3 { display: grid; grid-template-columns: 1.7fr 1fr 1fr; gap: 2.5mm; }
+.sub { border: .25mm solid #2b5f7c; border-radius: 2mm; padding: 1.5mm 2mm; background: #0e1d2b; } .sub h3 { margin: 0 0 .6mm; font-size: 7pt; text-align: center; color: #fff; text-transform: uppercase; letter-spacing: .5px; }
+.ln { display: flex; align-items: center; gap: 1.6mm; padding: .7mm 0; border-top: .2mm solid #1f4a66; } .ln:first-of-type { border: 0; }
+.d { flex: none; width: 5mm; height: 5mm; border-radius: 1.2mm; background: #fff; display: inline-flex; align-items: center; justify-content: center; color: #1b2230; font-weight: 800; font-family: Bahnschrift, sans-serif; font-size: 9pt; } .d svg { width: 3.9mm; height: 3.9mm; }
+b.k { color: #4fd1e8; } b.r { color: #ff7b6e; } b.g { color: #5fe08f; } b.y { color: #ffd24a; } b.o { color: #ffa45c; }
+.ph { display: grid; grid-template-columns: 1fr 1fr; gap: 2mm; } .p { border: .25mm solid #2b5f7c; border-radius: 2mm; padding: 1.3mm 2mm; background: #0e1d2b; } .p b.n { display: inline-block; width: 4.4mm; height: 4.4mm; border: .3mm solid #4fd1e8; border-radius: 1mm; text-align: center; line-height: 3.9mm; margin-right: 1mm; color: #4fd1e8; }
+table { width: 100%; border-collapse: collapse; } td, th { border: .2mm solid #2b5f7c; padding: .8mm 1.6mm; text-align: left; } th { color: #b9d3dd; font-weight: 600; }
+.sq { display: inline-block; width: 3mm; height: 3mm; border-radius: .6mm; vertical-align: -.4mm; margin-right: 1mm; }
+</style></head><body><div class="in">
+<h1>PROTOCOLE CLINIQUE : <span>HOMEOSTASIS</span> <small>v6.0</small></h1>
+<div class="lead"><b>BUT :</b> maintenir les 5 systèmes vitaux au-dessus de 0 PV. <b>Coop :</b> épuiser la pioche de Pathologies sans décès. <b>VS :</b> dernier survivant, ou patient le plus proche de sa pleine santé.</div>
+<div class="bx"><h2>Mise en place et états du patient</h2><div class="g2">
+<div class="sub"><h3>Matériel de départ</h3>5 systèmes à <b class="y">10 PV</b> · 1 Profil génétique · 1 Mauvaise habitude · 3 dés Bio-Tech · main de <b class="y">4 cartes</b>.<br>Pathologies : <b class="y">22 / 38 / 51 / 64</b> cartes à 1 / 2 / 3 / 4 joueurs.</div>
+<div class="sub"><h3>États de santé</h3><div class="ln"><span><b class="g">ZONE VERTE</b> — tout &gt; 5 PV en fin de tour : +1 ATP (max 2)</span></div><div class="ln"><span><b class="o">NÉCROSE</b> — 1 système à 0 : 2 dés par tour, système insoignable et intouchable</span></div><div class="ln"><span><b class="r">DÉCÈS</b> — 2 systèmes à 0 : fin de partie</span></div></div></div></div>
+<div class="bx"><h2>La règle d'or : chaque dé = 1 usage</h2><div class="g3">
+<div class="sub"><h3>Usage 1 : l'effet symbole</h3>
+<div class="ln"><span class="d" id="dS"></span><span><b class="k">BOUCLIER</b> : bloque 3 dégâts sur un système attaqué</span></div>
+<div class="ln"><span class="d" id="dP"></span><span><b class="g">PATCH</b> : soigne 1 PV + relance 1 dé</span></div>
+<div class="ln"><span class="d" id="dA"></span><span><b class="y">ADRÉNALINE</b> : double un Soin immédiat (active le Collatéral !)</span></div>
+<div class="ln"><span class="d" id="dL"></span><span><b class="k">LABO</b> : pioche 1 carte OU Vision OU paie un coût « Labo »</span></div>
+<div class="ln"><span class="d">2</span><span class="d">3</span><span>pas d'effet symbole</span></div></div>
+<div class="sub"><h3>Usage 2 : Puissance brute</h3>Tout dé vaut <b class="y">1 Puissance</b> pour payer les cartes. Les faces <b>2</b> et <b>3</b> valent 2 et 3.</div>
+<div class="sub"><h3>Usage 3 : Protection d'urgence</h3>Tout dé bloque <b class="y">1 dégât</b> sur un système attaqué.</div></div></div>
+<div class="bx"><h2>Séquence clinique (tour de jeu)</h2><div class="ph">
+<div class="p"><b class="n">1</b><b>MAINTENANCE</b><br>Piochez 2 cartes. <b class="r">Burn</b> : chaque Chronique active = -1 PV.</div>
+<div class="p"><b class="n">2</b><b>INVASION</b><br><b class="r">Aiguë</b> : attaque. <b class="r">Chronique</b> : s'installe, puis révélez encore. Même système déjà malade : <b class="o">CRISE (-5)</b>.</div>
+<div class="p"><b class="n">3</b><b>SIGNES VITAUX</b><br>Lancez 3 dés (2 si Nécrose). 1 Mulligan gratuit.</div>
+<div class="p"><b class="n">4</b><b>RÉPONSE (2 Actions)</b><br>Traitement · Action · Stabiliser · Habitude · Réanimation (2 dés, système à 4 PV).</div>
+<div class="p" style="grid-column:1/-1"><b class="n">5</b><b>HOMÉOSTASIE</b> — Dégâts − boucliers. <b class="y">Collatéral</b> : si dégâts &gt; 0 et symbole Adrénaline en jeu, le système suivant (Cardio → Respi → Neuro → Immuno → Digestif → Cardio) subit 50 %. Zone verte. Limite de main : 7.<br><b class="o">Risque iatrogénique « Relance le dé ! »</b> : sur 2 ou 3 = échec critique, -2 PV dans 3 systèmes au choix.</div></div></div>
+<div class="bx" style="margin:0"><h2>Légende des cartes</h2><table>
+<tr><th>Type</th><th>Dos</th><th>Rôle</th></tr>
+<tr><td><b class="r">PATHOLOGIE</b></td><td><span class="sq" style="background:#d6352b"></span>Rouge</td><td>L'ennemi. Aiguë (attaque) ou Chronique (reste en jeu).</td></tr>
+<tr><td><b class="g">TRAITEMENT</b></td><td rowspan="3"><span class="sq" style="background:#2f9a52"></span>Pioche clinique</td><td>L'arme. Soin immédiat, Médication (stabilise), Soin critique (risqué).</td></tr>
+<tr><td><b class="k">ACTION</b></td><td>La tactique. Interaction, bonus.</td></tr>
+<tr><td><b class="y">HABITUDE</b></td><td>Le terrain modifiable. Bonne (jaune) ou Mauvaise (orange).</td></tr>
+<tr><td><b style="color:#c58cf0">PROFIL</b></td><td><span class="sq" style="background:#8e3fc4"></span>Violet</td><td>Le terrain génétique. Permanent.</td></tr></table></div>
+</div><script>['S','P','A','L'].forEach((f) => (document.getElementById('d' + f).innerHTML = HS.ICON[f]));</script></body></html>

@@ -1,0 +1,29 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><title>Dés et jetons</title>
+<script src="../../web/js/data.js"></script><script src="../../web/js/icons.js"></script>
+<style>
+@page { size: 215.9mm 279.4mm; margin: 12mm; }
+body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; font-size: 9.5pt; color: #14222e; }
+h1 { font-family: Bahnschrift, sans-serif; font-size: 16pt; margin: 0 0 2mm; color: #0b6f8c; } h2 { font-size: 11pt; margin: 6mm 0 2mm; color: #0b6f8c; }
+.faces { display: flex; gap: 6mm; flex-wrap: wrap; } .f { text-align: center; font-size: 8pt; } .sqr { width: 28mm; height: 28mm; border: .4mm solid #1b2230; border-radius: 4mm; display: flex; align-items: center; justify-content: center; background: #fff; font-family: Bahnschrift, sans-serif; font-weight: 800; font-size: 50pt; } .sqr svg { width: 20mm; height: 20mm; }
+.st { display: grid; grid-template-columns: repeat(6, 16mm); gap: 2mm; } .s16 { width: 16mm; height: 16mm; border: .25mm solid #999; border-radius: 2mm; display: flex; align-items: center; justify-content: center; font-family: Bahnschrift, sans-serif; font-weight: 800; font-size: 26pt; } .s16 svg { width: 12mm; height: 12mm; }
+.tk { display: grid; grid-template-columns: repeat(7, 25mm); gap: 2mm; } .t svg { width: 25mm; height: 25mm; display: block; }
+p { margin: 1.5mm 0; }
+</style></head><body>
+<h1>HOMEOSTASIS — Dés Bio-Tech et jetons</h1>
+<h2>A. Les 6 faces du dé Bio-Tech (modèle pour dé gravé ou imprimé, 16 mm)</h2>
+<div class="faces" id="faces"></div>
+<p>Une face par symbole. Dé blanc, symboles en couleur (ou gravure une couleur). Quantité : <b>3 dés par joueur</b> (15 dés pour 5 joueurs).</p>
+<h2>B. Autocollants 16 mm pour dés vierges (prototype) — une rangée = un dé</h2>
+<div class="st" id="st"></div>
+<h2>C. Jetons ATP — Ø 25 mm (prévoir 15)</h2>
+<div class="tk" id="tk"></div>
+<h2>D. Marqueurs de PV</h2>
+<p>Cubes standard de 8 mm : 5 par joueur (1 par système), soit 25 cubes. Aucune impression requise.</p>
+<script>
+const F = ['S', 'P', 'A', 'L', '2', '3'], N = { S: 'Bouclier', P: 'Patch', A: 'Adrénaline', L: 'Labo', 2: 'Puissance 2', 3: 'Puissance 3' };
+const g = (f) => (isNaN(f) ? HS.ICON[f] : f);
+document.getElementById('faces').innerHTML = F.map((f) => `<div class="f"><div class="sqr">${g(f)}</div>${N[f]}</div>`).join('');
+let s = ''; for (let k = 0; k < 6; k++) s += F.map((f) => `<div class="s16">${g(f)}</div>`).join('');
+document.getElementById('st').innerHTML = s;
+document.getElementById('tk').innerHTML = Array(14).fill(`<div class="t">${HS.ICON.atp}</div>`).join('');
+</script></body></html>
