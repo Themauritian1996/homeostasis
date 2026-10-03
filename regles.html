@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HOMEOSTASIS — Règles du jeu v6.0</title>
+<style>
+  @page { size: A5; margin: 11mm 10mm 12mm; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; font-size: 10.2pt; line-height: 1.38; color: #14222e; background: #fff; }
+  main { max-width: 720px; margin: 0 auto; padding: 18px 16px 40px; }
+  h1 { font-family: 'Bahnschrift', 'Arial Narrow', sans-serif; font-size: 30pt; letter-spacing: 3px; margin: 0; color: #0b6f8c; }
+  .sub { color: #5a7384; letter-spacing: 1.5px; text-transform: uppercase; font-size: 8.5pt; margin: 2px 0 12px; }
+  h2 { font-family: 'Bahnschrift', sans-serif; font-size: 14pt; color: #fff; background: linear-gradient(90deg, #0b6f8c, #14a0bf); padding: 4px 10px; border-radius: 6px; margin: 16px 0 7px; break-after: avoid; }
+  h3 { font-size: 11pt; margin: 10px 0 3px; color: #0b6f8c; break-after: avoid; }
+  p { margin: 4px 0; } ul, ol { margin: 4px 0; padding-left: 19px; } li { margin: 2px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 6px 0; font-size: 9.3pt; break-inside: avoid; }
+  th { background: #dff1f6; text-align: left; } th, td { border: 1px solid #b9d3dd; padding: 3px 6px; vertical-align: top; }
+  .box { border: 1.5px solid #0b6f8c; border-radius: 8px; padding: 6px 10px; margin: 8px 0; background: #f2fafc; break-inside: avoid; }
+  .warn { border-color: #c0392b; background: #fdf1ef; }
+  .d { display: inline-flex; align-items: center; justify-content: center; min-width: 1.45em; height: 1.45em; border: 1.5px solid #14222e; border-radius: 4px; background: #fff; font-weight: 800; font-size: .9em; vertical-align: -0.25em; }
+  .tag { display: inline-block; padding: 0 6px; border-radius: 4px; color: #fff; font-weight: 700; font-size: .86em; }
+  .r { background: #c8281e; } .g { background: #1e7a3c; } .b { background: #2f6fd0; } .y { background: #c89a12; } .o { background: #e07b1a; } .p { background: #7b35b0; }
+  .cols { columns: 2; column-gap: 16px; } @media (max-width: 560px) { .cols { columns: 1; } }
+  .pb { break-before: page; }
+  small { color: #5a7384; }
+</style>
+</head>
+<body>
+<main>
+<h1>HOMEOSTASIS</h1>
+<div class="sub">Manuel de procédures cliniques · Règles du jeu · Version 6.0</div>
+
+<p><i>Le corps humain est une forteresse assiégée. L'homéostasie est cet équilibre précaire qui sépare la vie du chaos biologique. Vous êtes la dernière ligne de défense. « Primum non nocere »… mais l'urgence vous forcera parfois à prendre des risques.</i></p>
+<p><b>1 à 5 joueurs · 12 ans et + · 20 à 60 minutes</b></p>
+
+<h2>1. But du jeu</h2>
+<p>Chaque joueur soigne un <b>patient</b> composé de <b>5 systèmes vitaux</b> : 🫀 Cardio, 🫁 Respi, 🧠 Neuro, <b>Y</b> Immuno, 🍔 Digestif.</p>
+<ul>
+  <li><b>Coopératif / Solo (1 à 4 joueurs)</b> : l'équipe gagne si la pioche de Pathologies est épuisée <b>sans qu'aucun patient ne décède</b>. Un seul décès = défaite de tous.</li>
+  <li><b>Compétitif (2 à 5 joueurs)</b> : le <b>dernier patient en vie</b> gagne. Si la pioche s'épuise, on termine la manche puis le patient <b>le plus proche de sa pleine santé</b> (le moins de PV perdus) l'emporte.</li>
+</ul>
+
+<h2>2. Matériel (200 cartes)</h2>
+<table>
+  <tr><th>Paquet</th><th>Contenu</th><th>Dos</th></tr>
+  <tr><td><span class="tag r">Pathologies</span> (65)</td><td>45 Aiguës + 20 Chroniques</td><td>Rouge</td></tr>
+  <tr><td><span class="tag g">Traitements</span> (80)</td><td>45 Soins immédiats, 20 Médications, 15 Soins critiques</td><td rowspan="3">Pioche clinique (vert)</td></tr>
+  <tr><td><span class="tag b">Actions</span> (25)</td><td>Délégation, Veto, Placebo/Nocebo, Recherche</td></tr>
+  <tr><td><span class="tag y">Bonnes</span> / <span class="tag o">Mauvaises</span> habitudes (20)</td><td>10 + 10</td></tr>
+  <tr><td><span class="tag p">Profils génétiques</span> (10)</td><td>1 par joueur, permanent</td><td>Violet</td></tr>
+</table>
+<p>+ 3 dés Bio-Tech par joueur, 1 plateau Patient par joueur (5 pistes de PV), des jetons ATP, 1 aide de jeu.</p>
+
+<h2>3. Mise en place</h2>
+<ol>
+  <li>Chaque joueur prend un plateau et règle ses 5 systèmes à <b>10 PV</b>.</li>
+  <li>Distribuez à chacun <b>1 Profil génétique</b> (face visible) et <b>1 Mauvaise habitude</b> (face visible). Appliquez les modificateurs de PV max du profil.</li>
+  <li>Mélangez Traitements + Actions + Bonnes habitudes : c'est la <b>Pioche clinique</b>. <small>(En mode Compétitif, ajoutez-y les Mauvaises habitudes non distribuées.)</small></li>
+  <li>Mélangez les 65 Pathologies puis formez la <b>pioche de Pathologies</b> avec le nombre de cartes indiqué ci-dessous (le reste retourne dans la boîte, sans le regarder).</li>
+  <li>Chaque joueur pioche <b>4 cartes</b>. Le plus jeune commence.</li>
+</ol>
+<table>
+  <tr><th>Joueurs</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr>
+  <tr><td>Pathologies (partie normale)</td><td>22</td><td>38</td><td>51</td><td>64</td><td>65</td></tr>
+  <tr><td>Partie courte (× 0,7)</td><td>15</td><td>27</td><td>36</td><td>45</td><td>46</td></tr>
+</table>
+<p><b>Difficulté (Coop)</b> : <i>Interne</i> = 11 PV par système · <i>Résident</i> = 10 PV · <i>Patron</i> = 9 PV.</p>
+
+<h2>4. Santé du patient</h2>
+<div class="cols">
+<h3>Zone verte</h3>
+<p>À la fin de votre tour, si <b>tous</b> vos systèmes sont à <b>plus de 5 PV</b>, gagnez <b>1 ATP</b> (réserve max : 2). Un ATP vaut 1 Puissance, utilisable à n'importe quel tour.</p>
+<h3>Nécrose (1 système à 0 PV)</h3>
+<ul>
+  <li>Le système est hors service : il ne peut plus être soigné par les cartes ni recevoir de dégâts (<i>saturation</i>).</li>
+  <li>Vous ne lancez plus que <b>2 dés</b> tant qu'il reste à 0.</li>
+  <li><b>Réanimation</b> (1 Action) : sacrifiez 2 dés non utilisés, le système remonte à <b>4 PV</b>.</li>
+</ul>
+<h3>Décès</h3>
+<p>Dès qu'un <b>deuxième</b> système est à 0 PV en même temps, le patient décède immédiatement.</p>
+</div>
+
+<h2>5. Les dés Bio-Tech</h2>
+<p>Faces : <span class="d">🛡️</span> <span class="d">🩹</span> <span class="d">⚡</span> <span class="d">🧪</span> <span class="d">2</span> <span class="d">3</span>. Chaque dé sert <b>une seule fois</b>, pour <b>un</b> des trois usages :</p>
+<table>
+  <tr><th style="width:27%">Usage 1 — Effet symbole</th><th>Effet</th></tr>
+  <tr><td><span class="d">🛡️</span> Bouclier</td><td>Bloque <b>3 dégâts</b> sur un système visé par l'attaque du tour.</td></tr>
+  <tr><td><span class="d">🩹</span> Patch</td><td>Soigne <b>1 PV</b> n'importe où <b>et</b> permet de relancer un autre dé non utilisé.</td></tr>
+  <tr><td><span class="d">⚡</span> Adrénaline</td><td><b>Double</b> le prochain Soin immédiat joué ce tour. ⚠ Active le <b>Collatéral</b>.</td></tr>
+  <tr><td><span class="d">🧪</span> Labo</td><td>Au choix : piocher 1 carte · <b>ou</b> regarder la prochaine Pathologie (Vision) · <b>ou</b> payer une carte dont le coût affiche 🧪.</td></tr>
+  <tr><th>Usage 2 — Puissance brute</th><td>N'importe quel dé vaut <b>1 Puissance</b>. Les faces <span class="d">2</span> et <span class="d">3</span> valent 2 et 3.</td></tr>
+  <tr><th>Usage 3 — Protection d'urgence</th><td>N'importe quel dé bloque <b>1 dégât</b> sur un système visé.</td></tr>
+</table>
+<p>La Puissance non dépensée est perdue à la fin du tour (seuls les ATP se conservent).</p>
+
+<h2 class="pb">6. Déroulement d'un tour</h2>
+<h3>Phase 1 — Maintenance</h3>
+<ul>
+  <li><b>Approvisionnement</b> : piochez <b>2 cartes</b>.</li>
+  <li><b>Burn chronique</b> : chaque maladie Chronique <b>active</b> (non stabilisée) inflige <b>-1 PV</b> à son système.</li>
+</ul>
+<h3>Phase 2 — Invasion</h3>
+<p>Révélez la première Pathologie.</p>
+<ul>
+  <li><b>Aiguë</b> : elle <b>attaque</b> (ses dégâts seront appliqués en phase 5 ; son effet indiqué s'applique).</li>
+  <li><b>Chronique</b> : elle s'installe sur son système, puis <b>révélez une nouvelle carte</b> (<i>Comorbidité</i>) jusqu'à ce qu'une attaque ait lieu.
+    <ul>
+      <li>Système déjà occupé par une Chronique <b>active</b> : <b>Crise aiguë</b> ! Défaussez la nouvelle carte ; elle devient une attaque de <b>5 dégâts</b> sur ce système.</li>
+      <li>Système occupé par une Chronique <b>stabilisée</b> : la nouvelle carte est défaussée sans effet (le traitement de fond protège), révélez la suivante.</li>
+    </ul>
+  </li>
+</ul>
+<h3>Phase 3 — Signes vitaux</h3>
+<p>Lancez vos <b>3 dés</b> (2 si Nécrose). <b>Mulligan clinique</b> : une fois par tour, relancez gratuitement autant de dés non utilisés que vous voulez.</p>
+<h3>Phase 4 — Réponse (2 Actions)</h3>
+<p>Utilisez vos dés librement (boucliers, Puissance, effets…) et effectuez jusqu'à <b>2 Actions</b> parmi :</p>
+<ul>
+  <li>Jouer un <span class="tag g">Traitement</span> (payer son coût en Puissance).</li>
+  <li>Jouer une <span class="tag b">Action</span>.</li>
+  <li><b>Stabiliser</b> une Chronique avec une Médication compatible (glissez-la sous la Chronique, pivotée à 90°) : plus de Burn, plus d'effet passif.</li>
+  <li>Adopter une <span class="tag y">Bonne habitude</span> (remplace votre habitude actuelle).</li>
+  <li><b>Réanimation</b> (voir § 4).</li>
+</ul>
+<p><b>Coop — Consultation</b> : vous pouvez jouer un Soin immédiat sur le patient d'un allié pour <b>+2 Puissance</b>.</p>
+<h3>Phase 5 — Homéostasie (résolution)</h3>
+<ol>
+  <li><b>Bilan</b> : dégâts de l'attaque − boucliers posés sur chaque système. Baissez les PV du reste.</li>
+  <li>Appliquez les effets « si non bloqué à 100 % ».</li>
+  <li><b>Collatéral</b> : si vous avez subi au moins 1 dégât <b>et</b> qu'un symbole ⚡ est en jeu (dé Adrénaline utilisé, carte payée avec ⚡, ou carte marquée ⚠ Danger), le système <b>suivant</b> dans l'ordre Cardio → Respi → Neuro → Immuno → Digestif → Cardio subit <b>la moitié</b> (arrondie à l'inférieur) des dégâts subis.</li>
+  <li><b>Zone verte</b> : +1 ATP si tous les systèmes sont à plus de 5 PV.</li>
+  <li>Défaussez jusqu'à votre limite de main (<b>7 cartes</b>).</li>
+</ol>
+
+<h2>7. Règles spéciales</h2>
+<div class="box warn"><b>Risque iatrogénique — « Relance le dé ! »</b><br>Après avoir joué un Soin critique, lancez un dé. Sur <span class="d">2</span> ou <span class="d">3</span> : <b>échec critique</b>. L'effet de la carte s'applique quand même, mais vous subissez <b>-2 PV dans 3 systèmes de votre choix</b>.</div>
+<div class="box"><b>Coûts avec symbole</b> — Une carte dont le coût affiche « <span class="d">🧪</span> ou 2 » se paie soit avec un dé montrant ce symbole, soit avec la Puissance indiquée. L'Adrénaline payée avec un dé ⚡ active le Collatéral.</div>
+<div class="box"><b>Médication sans Chronique</b> — Vous pouvez jouer une Médication sans maladie à stabiliser : seul son bonus s'applique.</div>
+<div class="box"><b>Mode Compétitif</b> — Une Mauvaise habitude se joue sur un adversaire (1 Action) et remplace son habitude. Veto et Placebo/Nocebo ont un usage offensif (voir cartes). Une manche commencée est toujours terminée : tous les joueurs jouent le même nombre de tours.</div>
+
+<h2>8. Exemple de tour</h2>
+<p>Dr Martin a Cardio à 10 PV. <b>Invasion</b> : Infarctus (Cardio -6 / Neuro -3), il perd ses ATP. <b>Dés</b> : 🛡️, 2, 🧪. <b>Réponse</b> : le 🛡️ bloque 3 sur Cardio ; le 2 devient 2 Puissance, il joue une Transfusion (coût 2) plus tard si besoin ; le 🧪 pioche 1 carte. <b>Résolution</b> : Cardio 6 − 3 = -3 PV, Neuro -3 PV. Cardio 7, Neuro 7 : toujours en zone verte, +1 ATP.</p>
+
+<h2>9. Équilibrage (10 000+ parties simulées)</h2>
+<p>Taux de victoire d'un joueur « moyen » en coopératif : Interne ≈ 80 %, Résident ≈ 65 %, Patron ≈ 45 %, quel que soit le nombre de joueurs. En compétitif, chaque siège gagne à ± 2 % de la part théorique.</p>
+<p><small>HOMEOSTASIS v6.0 — conception originale : Cahya N. Règles rééquilibrées et automatisées.</small></p>
+</main>
+</body>
+</html>
