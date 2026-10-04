@@ -156,3 +156,29 @@ COOP 3J [patron] victoire 54.7% | tours moy. 33.4 | PVfin 30.2 | déf.méd. 57% 
     isolement         50.5%  (n=1026)
 COOP 4J [patron] victoire 53.5% | tours moy. 42.2 | PVfin 29.8 | déf.méd. 58% | cj/t 1.21 | dég/t 4.80 soin/t 4.73
 VS 2J sièges 49.5% / 50.5% | tours moy. 24.7 | fin par KO 53.0% | égalités 2.3%
+VS 3J sièges 33.5% / 33.7% / 32.8% | tours moy. 37.7 | fin par KO 19.4% | égalités 3.9%
+  Victoire par profil (attendu 33.3%):
+    lynch             44.2%  (n=1199)
+    hla               41.8%  (n=1177)
+    senior            37.6%  (n=1221)
+    metaboliseur      35.0%  (n=1142)
+    ehlers            34.9%  (n=1205)
+    alpha1            31.3%  (n=1255)
+    cardiaque         30.0%  (n=1192)
+    brca              29.0%  (n=1199)
+    hemochromatose    28.0%  (n=1160)
+    jeune             22.1%  (n=1250)
+  Victoire par habitude de départ:
+    aucune            41.8%  (n=1177)
+    negligence        34.7%  (n=1083)
+    alcoolisme        33.9%  (n=1045)
+    malbouffe         33.4%  (n=1075)
+    stresschro        33.2%  (n=1123)
+    deni              32.3%  (n=1046)
+    sedentarite       32.0%  (n=1038)
+    surmenage         31.9%  (n=1079)
+    insomnie          31.5%  (n=1117)
+    tabagisme         31.3%  (n=1138)
+    isolement         30.0%  (n=1079)
+VS 4J sièges 25.0% / 23.6% / 25.5% / 25.9% | tours moy. 48.5 | fin par KO 5.1% | égalités 5.5%
+(365.2 s)
