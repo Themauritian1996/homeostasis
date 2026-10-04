@@ -1,4 +1,4 @@
-# HOMEOSTASIS v6.0
+# HOMEOSTASIS v6.1
 
 Jeu de cartes médical pour 1 à 5 joueurs (coop ou compétitif) : version web multijoueur, application Android et dossier d'impression.
 
@@ -13,6 +13,11 @@ Jeu de cartes médical pour 1 à 5 joueurs (coop ou compétitif) : version web m
 | `impression/` | Fichiers prêts pour l'imprimeur (voir `LISEZ-MOI_IMPRIMEUR.md`) |
 | `android/` | Projet Android minimal + script de build de l'APK |
 | `docs/` | Analyse d'équilibrage et résultats de simulation |
+
+## Liens
+
+- Jouer : https://themauritian1996.github.io/homeostasis/
+- APK Android : https://github.com/Themauritian1996/homeostasis/releases/latest/download/homeostasis.apk
 
 ## Jouer sur cet ordinateur
 

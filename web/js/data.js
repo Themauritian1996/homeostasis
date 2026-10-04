@@ -3,7 +3,7 @@
 (function (root) {
   const HS = (root.HS = root.HS || {});
 
-  HS.VERSION = '6.0';
+  HS.VERSION = '6.1';
 
   // Ordre horaire du plateau (sert au Collatéral : l'organe « suivant »).
   HS.SYS = ['cardio', 'respi', 'neuro', 'immuno', 'digest'];
@@ -125,15 +125,15 @@
   add('soin', [
     { id: 'solute', name: 'Soluté Salin', sub: 'Hydratation', qty: 5, cost: 1, heal: { mode: 'one', amount: 3, systems: ALL },
       text: 'Soigne {amount} PV (1 système au choix).', flavor: 'Remplir les vaisseaux est la première étape du choc.' },
-    { id: 'antibio', name: 'Antibiotiques IV', sub: 'Antibiothérapie', qty: 8, cost: 3, heal: { mode: 'each', amount: 3, systems: ['immuno', 'respi', 'digest'] },
+    { id: 'antibio', name: 'Antibiotiques IV', sub: 'Antibiothérapie', qty: 8, cost: 3, heal: { mode: 'each', amount: 2, systems: ['immuno', 'respi', 'digest'] },
       text: 'Soigne {amount} PV dans CHACUN de ces systèmes.', flavor: 'Inefficace contre les virus. Précieux contre les bactéries.' },
-    { id: 'cortico', name: 'Corticostéroïdes', sub: 'Anti-inflammatoire', qty: 8, cost: 3, heal: { mode: 'split', amount: 6, systems: ['neuro', 'immuno', 'digest'] },
+    { id: 'cortico', name: 'Corticostéroïdes', sub: 'Anti-inflammatoire', qty: 8, cost: 3, heal: { mode: 'split', amount: 5, systems: ['neuro', 'immuno', 'digest'] },
       text: 'Soigne {amount} PV à répartir.', flavor: "Réduit l'inflammation mais peut causer diabète et confusion." },
-    { id: 'adrenaline', name: 'Adrénaline', sub: "Stimulant d'urgence", qty: 6, cost: 3, costDie: 'A', heal: { mode: 'split', amount: 6, systems: ['cardio', 'respi', 'immuno'] },
+    { id: 'adrenaline', name: 'Adrénaline', sub: "Stimulant d'urgence", qty: 6, cost: 3, costDie: 'A', heal: { mode: 'split', amount: 5, systems: ['cardio', 'respi', 'immuno'] },
       text: 'Soigne {amount} PV à répartir. Payée avec un dé [A] : active le Collatéral.', flavor: 'Augmente le rythme cardiaque et la pression en urgence vitale.' },
-    { id: 'oxygene', name: 'Oxygénothérapie', sub: 'Oxygénation', qty: 8, cost: 3, heal: { mode: 'split', amount: 6, systems: ['respi', 'neuro', 'cardio'] },
+    { id: 'oxygene', name: 'Oxygénothérapie', sub: 'Oxygénation', qty: 8, cost: 3, heal: { mode: 'split', amount: 5, systems: ['respi', 'neuro', 'cardio'] },
       text: 'Soigne {amount} PV à répartir.', flavor: "L'hypoxie tue le cerveau en 3 minutes." },
-    { id: 'transfusion', name: 'Transfusion', sub: 'Transfusion sanguine', qty: 5, cost: 2, heal: { mode: 'pick', n: 2, amount: 4, systems: ['cardio', 'digest', 'neuro'] },
+    { id: 'transfusion', name: 'Transfusion', sub: 'Transfusion sanguine', qty: 5, cost: 2, heal: { mode: 'pick', n: 2, amount: 3, systems: ['cardio', 'digest', 'neuro'] },
       text: 'Soigne {amount} PV sur 2 de ces systèmes.', flavor: "Une poche de sang sauve des vies lors d'hémorragies massives." },
     { id: 'support', name: 'Traitement de Support', sub: 'Soin global', qty: 5, cost: 3, heal: { mode: 'each', amount: 2, systems: ALL }, atp: 1,
       text: 'Soigne {amount} PV PARTOUT + 1 ATP.', flavor: 'Le soin global (nursing) est la clé de la récupération.' },
@@ -153,9 +153,9 @@
 
   // ---------- SOINS CRITIQUES / INVASIFS (15) ----------
   add('invasif', [
-    { id: 'chirurgie', name: "Chirurgie d'Urgence", sub: 'Intervention majeure', qty: 5, cost: 3, risk: 2, amount: 8,
+    { id: 'chirurgie', name: "Chirurgie d'Urgence", sub: 'Intervention majeure', qty: 5, cost: 3, risk: 2, amount: 7,
       text: 'Soigne {amount} PV (1 système). Relance le dé !', flavor: '« Ouvrir » comporte toujours un risque infectieux et hémorragique.' },
-    { id: 'dialyse', name: "Dialyse d'Urgence", sub: 'Épuration sanguine', qty: 3, cost: 4, risk: 2, amount: 7, systems: ['immuno', 'digest', 'neuro'],
+    { id: 'dialyse', name: "Dialyse d'Urgence", sub: 'Épuration sanguine', qty: 3, cost: 4, risk: 2, amount: 6, systems: ['immuno', 'digest', 'neuro'],
       text: 'Remonte ces systèmes à {amount} PV. Relance le dé !', flavor: 'Remplace le rein. Épure le sang mais fatigue le cœur.' },
     { id: 'intubation', name: 'Intubation', sub: 'Assistance vitale', qty: 3, cost: 2, risk: 2, amount: 3, systems: ['cardio', 'respi', 'neuro'],
       text: 'Ces systèmes ne descendent pas sous 1 PV ce tour + Respi +{amount} PV. Relance le dé !', flavor: 'Respiration artificielle. Risque de pneumonie nosocomiale.' },

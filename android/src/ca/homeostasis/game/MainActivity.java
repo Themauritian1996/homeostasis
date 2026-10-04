@@ -49,7 +49,7 @@ public class MainActivity extends Activity {
     @Override
     public void onBackPressed() {
         // Le bouton Retour ferme d'abord la feuille ouverte dans le jeu, sinon met l'appli en arrière-plan.
-        web.evaluateJavascript("(function(){var s=document.getElementById('sheet');if(s&&!s.classList.contains('hidden')){var b=s.querySelector('.x');if(b){b.click();return true;}}return false;})()",
+        web.evaluateJavascript("(function(){var z=document.getElementById('zoom');if(z&&!z.classList.contains('hidden')){z.click();return true;}var s=document.getElementById('sheet');if(s&&!s.classList.contains('hidden')){var b=s.querySelector('.x');if(b){b.click();}return true;}return false;})()",
                 value -> { if (!"true".equals(value)) moveTaskToBack(true); });
     }
 }

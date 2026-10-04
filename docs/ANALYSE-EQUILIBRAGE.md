@@ -1,4 +1,4 @@
-# HOMEOSTASIS — Analyse du système, rééquilibrage v6.0 et critique
+# HOMEOSTASIS — Analyse du système, rééquilibrage v6.1 et critique
 
 Méthode : le moteur de règles (`web/js/engine.js`) est joué par un bot heuristique « joueur moyen » (`web/js/bot.js`).
 Chaque configuration a été simulée de 1 500 à 4 000 fois (`node sim/simulate.js`). Résultats bruts : `docs/sim-v6.txt` et `docs/sim-origine.txt`.
@@ -19,9 +19,10 @@ Chaque configuration a été simulée de 1 500 à 4 000 fois (`node sim/simulate
 | **Règles floues** : usage de l'ATP, origine des Habitudes, Veto hors-tour, cartes mortes (Maintenance sans chronique, Délégation en solo, Isolement en solo, Érysipèle sans collatéral possible). | — |
 | **Cartes dont l'illustration ne correspond pas** : « Sepsis » étiqueté chronique, deux copies de « Chirurgie » avec le texte du Soluté, « Apnée du sommeil » illustrée par l'Intoxication au CO, « Chute / Trauma », « Intubation » et « Greffe » sans image. | Dossier d'images |
 
-## 2. Ce qui change en v6.0
+## 2. Ce qui change en v6 (chiffres de la v6.1)
 
 **Structure**
+- **Soin préventif (v6.1)** : les soins se jouent avant les dégâts ; les PV soignés au-delà du maximum annulent d'abord les dégâts à venir sur ce système (c'était la formule d'origine « Dégâts − (Boucliers + Soins) »). En v6.0 ce surplus était perdu, ce qui bloquait la répartition des soins sur des systèmes pleins. Les soins ont été réduits d'un cran pour compenser.
 - **10 PV** par système (pistes courtes, faciles à suivre) ; **Nécrose réversible** : Réanimation = 1 Action + 2 dés → 4 PV.
 - **Comorbidité** : une Chronique révélée s'installe *puis* on révèle une autre carte. Chaque tour comporte donc une vraie attaque ; c'est la principale source de tension ajoutée.
 - **Durée calibrée** : 22 / 38 / 51 / 64 pathologies à 1 / 2 / 3 / 4 joueurs (≈ 15 tours par joueur en solo, 11 à 4 joueurs). Variante courte × 0,7.
@@ -37,10 +38,11 @@ Chaque configuration a été simulée de 1 500 à 4 000 fois (`node sim/simulate
 | Carte | Avant | v6.0 |
 |---|---|---|
 | Soluté Salin | 5 PV | 3 PV |
-| Corticostéroïdes / Adrénaline / Oxygénothérapie | 8 PV à répartir | 6 PV à répartir |
-| Transfusion | 5 PV × 2 | 4 PV × 2 |
-| Chirurgie | 10–12 PV, échec variable | 8 PV, échec -2 PV × 3 systèmes |
-| Dialyse | remonte à 7–10 PV, coût 4 | remonte à 7 PV, coût 4 |
+| Antibiotiques IV | 3 PV × 3 | 2 PV × 3 |
+| Corticostéroïdes / Adrénaline / Oxygénothérapie | 8 PV à répartir | 5 PV à répartir |
+| Transfusion | 5 PV × 2 | 3 PV × 2 |
+| Chirurgie | 10–12 PV, échec variable | 7 PV, échec -2 PV × 3 systèmes |
+| Dialyse | remonte à 7–10 PV, coût 4 | remonte à 6 PV, coût 4 |
 | Intubation | plancher 1 PV, coût 3 | plancher 1 PV + Respi +3, coût 2 |
 | Greffe | retire 1 Chronique, coût 5 | retire 1 Chronique (+3 PV) **ou ranime une Nécrose à 5 PV**, coût 4 |
 | Médications | dé Labo obligatoire | dé Labo ou 2 Puissance ; jouables pour le bonus seul |
@@ -64,31 +66,30 @@ Chaque configuration a été simulée de 1 500 à 4 000 fois (`node sim/simulate
 | Antécédent Cardiaque / Alpha-1 | max -2 (sur 10) | max -2, +1 ATP de départ pour l'Antécédent |
 | Réseau Social, Curiosité, Isolement, Alcoolisme | interactions hors-tour ou effets nuls | effets simples et automatisables (voir cartes) |
 
-## 3. Résultats de la v6.0
+## 3. Résultats de la v6.1
 
-**Coopératif — taux de victoire (4 000 parties par case)**
+**Coopératif — taux de victoire (3 000 à 4 000 parties par case)**
 
-| Joueurs | Interne | Résident | Patron | Tours |
+| Joueurs | Interne (11 PV) | Résident (10 PV) | Patron (9 PV) | Tours |
 |---|---|---|---|---|
-| 1 | 79 % | 68 % | 53 % | 15 |
-| 2 | 81 % | 64 % | 42 % | 26 |
-| 3 | 84 % | 65 % | 38 % | 35 |
-| 4 | 87 % | 67 % | 36 % | 44 |
+| 1 | 80 % | 73 % | 64 % | 15 |
+| 2 | 81 % | 72 % | 55 % | 26 |
+| 3 | 86 % | 74 % | 55 % | 36 |
+| 4 | 87 % | 76 % | 53 % | 45 |
 
 Rappel règles d'origine : v5.1 ≈ 99–100 % partout ; v4.0 de 61 % (solo) à 98 % (4 J).
 Défaites : la médiane tombe vers 55–60 % de la pioche — la partie se joue au milieu, pas au premier tour.
-Rythme : 6,3 dégâts subis et 4,7 PV soignés par tour ; ≈ 1,1 carte jouée par tour pour 2 cartes piochées, donc de vrais choix.
 
 **Compétitif — équité des sièges**
 
 | Joueurs | Victoire par siège | Fin par KO | Égalités |
 |---|---|---|---|
-| 2 | 49,0 % / 51,0 % | 60 % | 3 % |
-| 3 | 32,7 % / 33,7 % / 33,6 % | 26 % | 4 % |
-| 4 | 24,3 % / 24,8 % / 25,0 % / 25,8 % | 8 % | 5 % |
+| 2 | 49,5 % / 50,5 % | 53 % | 2 % |
+| 3 | 33,5 % / 33,7 % / 32,8 % | 19 % | 4 % |
+| 4 | 25,0 % / 23,6 % / 25,5 % / 25,9 % | 5 % | 6 % |
 
-**Profils génétiques** : en solo Résident, tous entre 65 % et 78 % (moyenne 70 %) ; en coop à 3 (Interne), tous entre 82 % et 86 %.
-En VS à 3, de 29 % à 42 % pour 33 % attendus. **Mauvaises habitudes** : toutes dans une bande de 3 points — aucune n'est une condamnation.
+**Profils génétiques** : en coop à 3 (Interne), tous entre 84 % et 88 %. En VS à 3, de 22 % (Jeune en Santé) à 44 % (Lynch) pour 33 % attendus — l'écart s'est creusé par rapport à la v6.0 et reste le principal point à retravailler.
+**Mauvaises habitudes** : toutes dans une bande de quelques points — aucune n'est une condamnation.
 
 ## 4. Critique honnête du jeu
 
@@ -99,8 +100,8 @@ En VS à 3, de 29 % à 42 % pour 33 % attendus. **Mauvaises habitudes** : toutes
 
 **Faiblesses qui restent**
 1. **Interaction limitée.** En VS, chacun soigne surtout son patient ; l'interaction passe par ~25 cartes. C'est un jeu de course plus que d'affrontement.
-2. **Le niveau Patron est plus dur à plusieurs** (53 % solo, 36 % à 4) : une seule mort fait perdre toute l'équipe.
-3. **HLA Rare et Lynch sont un peu forts en VS** (≈ 42 %), Jeune et BRCA un peu faibles (≈ 29 %).
+2. **Le niveau Patron est plus dur à plusieurs** (64 % solo, 53 % à 4) : une seule mort fait perdre toute l'équipe. Le jeu est globalement un peu plus facile qu'en v6.0.
+3. **Lynch et HLA Rare sont trop forts en VS** (42–44 %), Jeune en Santé trop faible (22 %).
 4. **Le Digestif est le système qui nécrose le plus** (il est « suivant » de l'Immuno, cible principale la plus fréquente). C'est jouable, mais à surveiller en test réel.
 5. **Vision** (dé Labo, Antécédent Cardiaque) reste l'usage le moins rentable : à plusieurs, la prochaine Pathologie vise le joueur suivant.
 6. **Charge de règles sur table** : une vingtaine d'effets passifs à retenir. L'application les automatise ; en version physique, prévoir l'aide de jeu à chaque place.

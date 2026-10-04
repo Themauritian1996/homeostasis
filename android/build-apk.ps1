@@ -38,7 +38,7 @@ if (Test-Path $build) { Remove-Item $build -Recurse -Force }
 New-Item -ItemType Directory -Force "$build\classes", "$build\gen", "$build\res\mipmap-xxxhdpi" | Out-Null
 Copy-Item (Join-Path $root 'web\img\icon-192.png') "$build\res\mipmap-xxxhdpi\ic_launcher.png"
 & "$bt\aapt2.exe" compile --dir "$build\res" -o "$build\res.zip"
-& "$bt\aapt2.exe" link -o "$build\app.unsigned.apk" -I $jar --manifest (Join-Path $here 'AndroidManifest.xml') --java "$build\gen" "$build\res.zip" --min-sdk-version 24 --target-sdk-version 34 --version-code 600 --version-name 6.0
+& "$bt\aapt2.exe" link -o "$build\app.unsigned.apk" -I $jar --manifest (Join-Path $here 'AndroidManifest.xml') --java "$build\gen" "$build\res.zip" --min-sdk-version 24 --target-sdk-version 34 --version-code 610 --version-name 6.1
 if ($LASTEXITCODE -ne 0) { throw 'aapt2 link a échoué.' }
 $src = @(Get-ChildItem (Join-Path $here 'src') -Recurse -Filter *.java | ForEach-Object FullName) + @(Get-ChildItem "$build\gen" -Recurse -Filter *.java | ForEach-Object FullName)
 & javac -nowarn --release 8 -cp $jar -d "$build\classes" $src

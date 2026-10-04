@@ -43,7 +43,15 @@ const u = (p) => pathToFileURL(p).href;
   };
   const pdfFile = async (src, file) => {
     await page.goto(u(src), { waitUntil: 'load' });
-    await page.pdf({ path: file, printBackground: true, preferCSSPageSize: true });
+    try {
+      await page.pdf({ path: file, printBackground: true, preferCSSPageSize: true });
+    } catch (e) {
+      if (e.code !== 'EBUSY') throw e;
+      // fichier ouvert dans un lecteur PDF : on écrit une copie à côté
+      file = file.replace(/\.pdf$/, '_nouveau.pdf');
+      await page.pdf({ path: file, printBackground: true, preferCSSPageSize: true });
+      console.log('ATTENTION : fichier verrouillé, copie écrite à côté.');
+    }
     console.log('PDF', path.relative(ROOT, file));
   };
 
