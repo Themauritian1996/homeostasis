@@ -1,8 +1,11 @@
 /* HOMEOSTASIS — thème « moniteur clinique » */
 :root { --bg: #07111b; --pan: #0e1d2b; --pan2: #142a3d; --line: #1f4a66; --cy: #4fd1e8; --tx: #e8f4fa; --mut: #8fb0c2; --ok: #46c46e; --bad: #ff5d5d; --warn: #ffb347; --gold: #ffd24a; }
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-html, body { margin: 0; height: 100%; background: var(--bg); color: var(--tx); font-family: 'Segoe UI', Roboto, system-ui, sans-serif; font-size: 15px; overscroll-behavior: none; }
-body { background: radial-gradient(120% 80% at 50% 0%, #10283b, var(--bg) 70%) fixed; }
+html { background: var(--bg); }
+html, body { margin: 0; height: 100%; color: var(--tx); font-family: 'Segoe UI', Roboto, system-ui, sans-serif; font-size: 15px; overscroll-behavior: none; }
+/* Fond médical : croix, cœur, tracé ECG, gélule, ADN, stéthoscope, seringue — en filigrane */
+body { background: transparent; }
+body::before { content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280' viewBox='0 0 280 280' fill='none' stroke='%234fd1e8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' opacity='.13'%3E%3Cpath d='M30 24h12v12h12v12H42v12H30V48H18V36h12z'/%3E%3Cpath d='M104 46h22l6-12 9 26 9-36 8 30 5-8h26'/%3E%3Cpath d='M236 70c-12-9-17-15-17-22 0-5 4-9 9-9 3 0 6 2 8 5 2-3 5-5 8-5 5 0 9 4 9 9 0 7-5 13-17 22z'/%3E%3Cg transform='rotate(-35 60 120)'%3E%3Crect x='34' y='110' width='52' height='20' rx='10'/%3E%3Cpath d='M60 110v20'/%3E%3C/g%3E%3Cpath d='M150 96c0 14 22 14 22 28s-22 14-22 28M172 96c0 14-22 14-22 28s22 14 22 28M153 104h16M153 124h16M153 144h16'/%3E%3Cpath d='M222 118v20a14 14 0 0 0 28 0v-20M236 152v10a16 16 0 0 0 16 16'/%3E%3Ccircle cx='258' cy='178' r='5'/%3E%3Cg transform='rotate(40 70 220)'%3E%3Crect x='40' y='212' width='44' height='16' rx='2'/%3E%3Cpath d='M84 220h18M30 220h10M34 212v16M52 212v6M62 212v6M72 212v6'/%3E%3C/g%3E%3Ccircle cx='160' cy='222' r='16'/%3E%3Cpath d='M152 222h16M160 214v16'/%3E%3Cpath d='M214 236h14l5-10 7 20 6-14 4 4h16'/%3E%3C/svg%3E") 0 0 / 280px 280px, radial-gradient(120% 80% at 50% 0%, #123049, var(--bg) 70%); }
 button { font: inherit; color: var(--tx); background: var(--pan2); border: 1px solid var(--line); border-radius: 10px; padding: 9px 12px; cursor: pointer; touch-action: manipulation; }
 button:active:not(:disabled) { transform: translateY(1px); filter: brightness(1.2); }
 button:disabled { opacity: .4; cursor: default; }
@@ -120,7 +123,7 @@ h1, h2, h3 { margin: 0 0 8px; font-family: 'Bahnschrift', 'Segoe UI', sans-serif
 .opts { display: flex; flex-direction: column; gap: 7px; } .opts button { text-align: left; padding: 12px; font-size: 15px; } .opts button.pri { border-color: var(--cy); background: #14465a; } .opts small { color: var(--mut); }
 .ol { color: var(--cy); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin: 10px 0 4px; }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; } .chips button { padding: 8px 11px; font-size: 14px; } .chips button.on { background: #17607a; border-color: var(--cy); font-weight: 700; }
-.cs { display: flex; gap: 12px; } .csopt > :first-child { margin-top: 0; padding-right: 40px; min-height: 30px; } .sheet-body > h3 { padding-right: 40px; } .csimg { width: 42%; max-width: 210px; align-self: flex-start; border-radius: 10px; } .csopt { flex: 1; min-width: 0; }
+.cs { display: flex; gap: 12px; } .csopt > :first-child { margin-top: 0; padding-right: 40px; min-height: 30px; } .sheet-body > h3 { padding-right: 40px; } .csimg { width: 42%; max-width: 210px; align-self: flex-start; flex: none; } .csopt { flex: 1; min-width: 0; }
 .alloc .al { display: flex; align-items: center; gap: 6px; padding: 3px 0; } .al span { margin-left: auto; display: flex; align-items: center; gap: 6px; } .al span button { width: 34px; height: 34px; padding: 0; } .al b { width: 20px; text-align: center; } .al small { color: var(--mut); }
 .block { color: var(--warn); font-size: 13px; margin: 8px 0; } .res2 { color: var(--mut); font-size: 12px; margin-top: 8px; }
 .mini-hand { display: flex; gap: 6px; overflow-x: auto; padding: 6px 2px; } .mini-hand span { flex: none; width: 92px; border-radius: 6px; cursor: pointer; } .mini-hand img { width: 100%; border-radius: 6px; display: block; }
@@ -140,3 +143,16 @@ h1, h2, h3 { margin: 0 0 8px; font-family: 'Bahnschrift', 'Segoe UI', sans-serif
   .top, .others, .hand, .cmd, .dice { grid-column: 1 / -1; }
   .hc { width: 150px; } .pcard { width: 34%; }
 }
+
+/* agrandissement plein écran */
+.zoomov { position: fixed; inset: 0; z-index: 50; background: #000e; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 10px; cursor: zoom-out; }
+.zoomov img { max-width: 100%; max-height: calc(100% - 34px); border-radius: 16px; box-shadow: 0 10px 40px #000; }
+.zoomov span { color: var(--mut); font-size: 13px; }
+.hc { position: relative; }
+.hc .mag { position: absolute; right: 4px; top: 4px; width: 32px; height: 32px; padding: 0; border-radius: 50%; background: #07111bcc; border: 1px solid var(--cy); font-size: 15px; line-height: 1; }
+.csimg { position: relative; cursor: zoom-in; } .csimg img { width: 100%; border-radius: 10px; display: block; }
+.csimg span { position: absolute; left: 0; right: 0; bottom: 0; padding: 4px; text-align: center; font-size: 12px; background: #07111bcc; border-radius: 0 0 10px 10px; }
+.aln { line-height: 1.25; } .aln .pv { display: block; } .pv { color: var(--mut); font-size: 12px; } .pv b { color: var(--ok); } .inc { color: #ff9a9a; } .lost { color: var(--warn); }
+.chips .pv { display: block; }
+.mini-btn { padding: 4px 9px; font-size: 12px; margin-left: 6px; }
+.sheet-body.modal { border-color: var(--gold); }

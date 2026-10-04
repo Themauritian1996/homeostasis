@@ -1,5 +1,5 @@
 /* Cache hors-ligne minimal (réseau d'abord, cache en secours). */
-const CACHE = 'homeostasis-v6-1';
+const CACHE = 'homeostasis-v6-2';
 self.addEventListener('install', (e) => { self.skipWaiting(); });
 self.addEventListener('activate', (e) => { e.waitUntil(caches.keys().then((ks) => Promise.all(ks.filter((k) => k !== CACHE).map((k) => caches.delete(k)))).then(() => self.clients.claim())); });
 self.addEventListener('fetch', (e) => {

@@ -113,6 +113,8 @@
     }
     return before - after;
   }
+  // Soin. Les PV au-delà du maximum ne sont pas perdus s'il reste des dégâts à venir sur ce système :
+  // ils les annulent d'abord (« Soin préventif » : Dégâts - (Boucliers + Soins)).
   function heal(st, p, sys, n, green) {
     if (p.dead || p.hp[sys] <= 0) return 0;
     if (has(p, 'alimentation')) n += 1;
@@ -120,8 +122,15 @@
     if (n <= 0) return 0;
     const before = p.hp[sys];
     p.hp[sys] = Math.min(p.max[sys], before + n);
-    p.stats.heal += p.hp[sys] - before;
-    return p.hp[sys] - before;
+    let done = p.hp[sys] - before;
+    const over = n - done;
+    const t = st.turn, a = t && t.pid === p.id && t.attack && !t.attack.cancelled ? t.attack : null;
+    if (over > 0 && a && a.dmg[sys]) {
+      const absorb = Math.min(over, Math.max(0, a.dmg[sys] - (a.shield[sys] || 0)));
+      if (absorb > 0) { a.shield[sys] = (a.shield[sys] || 0) + absorb; done += absorb; }
+    }
+    p.stats.heal += done;
+    return done;
   }
 
   // Valeur marginale d'un PV selon le niveau (sert à l'auto-répartition et au bot).
@@ -141,7 +150,7 @@
     const pend = pendingDmg(st, p);
     const delta = (has(p, 'alimentation') ? 1 : 0) - (green && chronicOn(p, 'crohn') ? 1 : 0);
     const proj = (s) => p.hp[s] - (pend[s] || 0);
-    const room = (s) => p.max[s] - p.hp[s];
+    const room = (s) => p.max[s] - p.hp[s] + (pend[s] || 0); // PV manquants + dégâts à venir
     const gain = (s, amt) => {
       const eff = Math.min(room(s), Math.max(0, amt + delta));
       let g = 0;

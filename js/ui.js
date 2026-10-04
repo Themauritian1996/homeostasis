@@ -35,13 +35,26 @@
     clearTimeout(toastT);
     toastT = setTimeout(() => toastEl.classList.add('hidden'), 2600);
   }
-  function openSheet(html, opt) {
+  function openSheet(html, opt, keep) {
     HSheet = [];
     const h = typeof html === 'function' ? html() : html;
-    sheetEl.innerHTML = `<div class="sheet-bg" ${on(() => closeSheet(), true)}></div><div class="sheet-body ${opt && opt.cls ? opt.cls : ''}"><button class="x" ${on(() => closeSheet(), true)}>✕</button>${h}</div>`;
+    if (sheetEl.classList.contains('hidden') && keep) return; // fermée entre-temps
+    const modal = opt && opt.cls === 'modal';
+    const body = keep && sheetEl.querySelector('.sheet-body');
+    const inner = `${modal ? '' : `<button class="x" ${on(() => closeSheet(), true)}>✕</button>`}${h}`;
+    if (body) { // mise à jour sur place : pas d'animation, défilement conservé
+      const y = body.scrollTop;
+      sheetEl.querySelector('.sheet-bg').replaceWith(sheetEl.querySelector('.sheet-bg').cloneNode());
+      body.innerHTML = inner;
+      body.scrollTop = y;
+      if (!modal) sheetEl.querySelector('.sheet-bg').addEventListener('click', () => closeSheet());
+    } else {
+      sheetEl.innerHTML = `<div class="sheet-bg"></div><div class="sheet-body ${opt && opt.cls ? opt.cls : ''}">${inner}</div>`;
+      if (!modal) sheetEl.querySelector('.sheet-bg').addEventListener('click', () => closeSheet());
+    }
     sheetEl.classList.remove('hidden');
     bind(sheetEl, HSheet);
-    sheetEl._re = typeof html === 'function' ? () => openSheet(html, opt) : null;
+    sheetEl._re = typeof html === 'function' ? () => openSheet(html, opt, true) : null;
   }
   function closeSheet() { sheetEl.classList.add('hidden'); sheetEl.innerHTML = ''; sheetEl._re = null; S.cs = null; }
   const sheetOpen = () => !sheetEl.classList.contains('hidden');
@@ -292,9 +305,13 @@
     return `<div class="gallery"><div class="ghead"><button class="link" ${on(() => { S.screen = 'home'; render(); })}>← Retour</button><h2>Les ${Object.values(C).reduce((a, c) => a + (c.qty || 1), 0)} cartes</h2></div>
       ${groups.map(([t, l]) => `<h3>${l}</h3><div class="grid">${HS.byType(t).map((c) => `<div class="gc" ${on(() => zoom(c.id))}>${img(c.id)}${c.qty ? `<b>×${c.qty}</b>` : ''}</div>`).join('')}</div>`).join('')}</div>`;
   }
-  function zoom(id, extra) {
-    openSheet(`<div class="zoom">${img(id)}${extra || ''}</div>`, { cls: 'zoomsheet' });
+  // Agrandissement plein écran d'une carte (indépendant des feuilles : on revient où l'on était).
+  const zoomEl = document.getElementById('zoom');
+  function zoom(id) {
+    zoomEl.innerHTML = `${img(id)}<span>Toucher pour fermer</span>`;
+    zoomEl.classList.remove('hidden');
   }
+  zoomEl.addEventListener('click', () => { zoomEl.classList.add('hidden'); zoomEl.innerHTML = ''; });
 
   // ---------- partie ----------
   function gauges(v, p, big) {
@@ -410,7 +427,7 @@
     h += `<section class="hand ${mine ? '' : 'idle'}">${me.hand.length ? me.hand.map((c) => {
       const card = C[c.id];
       const ok = canAct && playable(v, me, card);
-      return `<div class="hc ${ok ? 'ok' : ''}" ${on(() => cardTap(c.uid))}>${img(c.id)}</div>`;
+      return `<div class="hc ${ok ? 'ok' : ''}" ${on(() => cardTap(c.uid))}>${img(c.id)}<button class="mag" title="Agrandir" ${on(() => zoom(c.id))}>🔍</button></div>`;
     }).join('') : '<div class="empty">Main vide</div>'}</section>`;
     h += '</div>';
 
@@ -574,18 +591,28 @@
       const maxSys = def.mode === 'one' ? 1 : def.mode === 'pick' ? def.n : lim2 ? 2 : 99;
       const used = Object.keys(cs.alloc).filter((s) => cs.alloc[s] > 0);
       opt += `<div class="ol">${card.id === 'placebo' ? 'Copie : ' + (v.lastSoin ? esc(C[v.lastSoin].name) : '3 PV') + ' — ' : ''}${mult > 1 ? '⚡×2 — ' : ''}${def.mode === 'split' ? `Répartir ${amt} PV` : def.mode === 'each' && !lim2 ? `${amt} PV sur chaque système` : `${amt} PV sur ${maxSys} système${maxSys > 1 ? 's' : ''}`}</div>`;
+      const pend = HS.pendingDmg(v, tg);
+      const bonus = (HS.has(tg, 'alimentation') ? 1 : 0) - (HS.chronicOn(tg, 'crohn') ? 1 : 0);
+      // aperçu : PV réellement gagnés + dégâts à venir annulés par le surplus
+      const preview = (s2, n) => {
+        const e = n > 0 ? Math.max(0, n + bonus) : 0;
+        const hp = Math.min(tg.max[s2], tg.hp[s2] + e);
+        const abs = Math.min(tg.hp[s2] + e - hp, pend[s2] || 0);
+        const lost = tg.hp[s2] + e - hp - abs;
+        return `<small class="pv">${tg.hp[s2]}→<b>${hp}</b>/${tg.max[s2]}${pend[s2] ? ` · <span class="inc">-${pend[s2]} à venir${abs ? `, ${abs} annulé${abs > 1 ? 's' : ''}` : ''}</span>` : ''}${lost > 0 ? ` · <span class="lost">${lost} perdu${lost > 1 ? 's' : ''}</span>` : ''}</small>`;
+      };
       if (def.mode === 'split') {
         const sum = used.reduce((a, s) => a + cs.alloc[s], 0);
-        opt += `<div class="alloc">${live.map((s) => { const n = cs.alloc[s] || 0; const canAdd = sum < amt && tg.hp[s] + n < tg.max[s] + 1 && (n > 0 || used.length < maxSys);
-          return `<div class="al">${si(s)} ${SN(s)} <small>${tg.hp[s]}/${tg.max[s]}</small><span><button ${n ? '' : 'disabled'} ${on(() => { cs.alloc[s] = n - 1; re(); }, true)}>−</button><b>${n}</b><button ${canAdd ? '' : 'disabled'} ${on(() => { cs.alloc[s] = n + 1; re(); }, true)}>+</button></span></div>`; }).join('')}
-          <div class="fine">Reste à répartir : ${amt - sum}</div></div>`;
+        opt += `<div class="alloc">${live.map((s) => { const n = cs.alloc[s] || 0; const canAdd = sum < amt && (n > 0 || used.length < maxSys);
+          return `<div class="al"><div class="aln">${si(s)} ${SN(s)}${preview(s, n)}</div><span><button ${n ? '' : 'disabled'} ${on(() => { if (n - 1 > 0) cs.alloc[s] = n - 1; else delete cs.alloc[s]; re(); }, true)}>−</button><b>${n}</b><button ${canAdd ? '' : 'disabled'} ${on(() => { cs.alloc[s] = n + 1; re(); }, true)}>+</button></span></div>`; }).join('')}
+          <div class="fine">${amt - sum > 0 ? `Reste à répartir : <b>${amt - sum}</b>` : 'Tout est réparti ✔'} <button class="mini-btn" ${on(() => { cs.alloc = HS.planHeal(v, tg, def, mult, true).alloc; re(); }, true)}>Répartition conseillée</button></div></div>`;
       } else if (def.mode === 'each' && !lim2) {
-        opt += `<div class="fine">${live.map((s) => `${si(s)} ${SN(s)} ${tg.hp[s]}/${tg.max[s]}`).join(' · ')}</div>`;
+        opt += `<div class="alloc">${live.map((s) => `<div class="al"><div class="aln">${si(s)} ${SN(s)}${preview(s, amt)}</div></div>`).join('')}</div>`;
       } else {
         opt += chips(live, (s) => cs.alloc[s] > 0, (s) => {
           if (cs.alloc[s] > 0) delete cs.alloc[s];
           else { if (used.length >= maxSys) delete cs.alloc[used[0]]; cs.alloc[s] = amt; }
-        }, (s) => `${si(s)} ${SN(s)} <small>${tg.hp[s]}/${tg.max[s]}</small>`);
+        }, (s) => `${si(s)} ${SN(s)} ${preview(s, cs.alloc[s] || 0)}`);
       }
     }
     if (card.type === 'maint') {
@@ -627,7 +654,7 @@
       (auto || []).forEach((d) => send({ type: 'die', i: d.i, use: 'power' }));
       send(a);
     };
-    return `<div class="cs">${img(inst.id, 'csimg')}<div class="csopt">${opt}${pay}
+    return `<div class="cs"><div class="csimg" ${on(() => zoom(inst.id), true)}>${img(inst.id)}<span>🔍 Agrandir</span></div><div class="csopt">${opt}${pay}
       ${block ? `<div class="block">${esc(block)}</div>` : ''}
       <div class="res2">Puissance ${t.power} · ATP ${me.atp} · Actions ${t.actions}</div>
       ${auto ? `<div class="fine">Dés convertis en Puissance : ${auto.map((d) => face(d.f)).join(' ')}</div>` : ''}
